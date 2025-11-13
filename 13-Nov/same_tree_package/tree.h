@@ -1,6 +1,7 @@
 #ifndef TREE_H_INCLUDED
 #define TREE_H_INCLUDED
 
+#include <cstddef>
 class Tree{
     class Node{
         public:
@@ -36,8 +37,27 @@ public:
     }
     bool isSameBinaryTree(Tree& t) {
         // Insert your code here
+        return loop_check(mRoot, t.mRoot);
     }
     // You can also put your code here
+    bool loop_check(Node *(&T1), Node *(&T2)){
+        if (T1 == NULL && T2 == NULL) {
+            return true;
+        }
+        else if (T1 == NULL ^ T2 == NULL) {
+            return false;
+        }
+        else {
+            return (
+                T1->data == T2->data
+                and
+                loop_check(T1->left,T2->left)
+                and
+                loop_check(T1->right,T2->right)
+            );
+        }
+    }
+    
 
 protected:
     void insertAt(Node*& r, int x) {
