@@ -1,0 +1,1 @@
+{"name":"Local: ds00_reverse2bak","url":"/home/nongart/dsalgo/03-Nov/ds00_reverse2bak.cpp","tests":[{"id":1763620768954,"input":"10\n5 0 8 9 3 6 7 1 2 4\n9 9","output":"5 0 8 9 3 6 7 1 2 4 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/nongart/dsalgo/03-Nov/ds00_reverse2bak.cpp","group":"local","local":true}
