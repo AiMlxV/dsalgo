@@ -21,21 +21,15 @@ std::pair<KeyT,MappedT> CP::map_bst<KeyT,MappedT,CompareT>::subtree(map_bst<KeyT
   if(empty()){
     return std::pair<KeyT,MappedT>();
   }
-
   left.clear();
   right.clear();
-
   left.mRoot = mRoot->left;
   right.mRoot = mRoot->right;
-
   left.mSize = process(left.mRoot);
   right.mSize = process(right.mRoot);
-
   mSize = 1;
-
   mRoot->left == NULL;
   mRoot->right == NULL;
-
   return mRoot->data;
 }
 

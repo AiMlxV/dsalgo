@@ -18,27 +18,21 @@ void CP::list<T>::zigzag(CP::list<T> &ls) {
     node *head_a = mHeader->next;
     node *head_b = ls.mHeader->next;
     node *before = ls.mHeader->prev;
-
     while ((head_b!=mHeader)&&(head_b!=ls.mHeader)) {
         node * new_head_b = head_a->next;
-
         head_a->next = head_b;
         head_b->prev = head_a;
         head_a = head_b;
         head_b = new_head_b;
-    }
-
+    } //connect to each node
     ls.mHeader->next = ls.mHeader;
     ls.mHeader->prev = ls.mHeader;
-
     if (head_b == mHeader) {
         before->next = mHeader;
         mHeader->prev = before;
-    }
-
+    } //cleanup
     mSize+= ls.mSize;
     ls.mSize=0;
-
 }
 
 #endif

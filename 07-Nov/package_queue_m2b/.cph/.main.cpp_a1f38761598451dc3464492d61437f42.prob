@@ -1,1 +1,0 @@
-{"name":"Local: main","url":"/home/nongart/dsalgo/07-Nov/package_queue_m2b/main.cpp","tests":[{"id":1762762001646,"input":"u 1\nu 2\nu 3\nu 4\np\nm 2\np\nq","output":"Size 4: 1 2 3 4 \nSize 4: 1 2 4 3 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/nongart/dsalgo/07-Nov/package_queue_m2b/main.cpp","group":"local","local":true}
