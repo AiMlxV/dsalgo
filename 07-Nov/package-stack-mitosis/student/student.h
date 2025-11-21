@@ -1,37 +1,30 @@
 #ifndef __STACK_STUDENT_H__
 #define __STACK_STUDENT_H__
 #include "stack.h"
+#include <cstddef>
 
 
 template <typename T>
 void CP::stack<T>::mitosis(int a, int b)
 {
-    size_t a_element = mSize - 1 - static_cast<size_t>(a);
-    size_t b_element = mSize - 1 - static_cast<size_t>(b);
-    size_t len = static_cast<size_t>(b - a + 1);
-    size_t newSize = mSize + len;
+    size_t n_element = b - a;
 
-    if (mCap == 0) {
-        expand(1);
-    }
-    while (mCap < newSize) {
+    //expand
+    if (mCap < mSize + n_element + 1) {
         expand(mCap*2);
     }
-    
-    size_t r = static_cast<int>(mSize) - 1;
-    size_t w = static_cast<int>(newSize) - 1;
 
-    while (r > static_cast<int>(a_element)) {
-        mData[w--] = mData[r--];
+    //shift
+    for (int i = 0; i < a; i++) {
+        mData[mSize + n_element - i] = mData[mSize - i - 1];
     }
 
-    for (int i = static_cast<int>(a_element); i >= static_cast<int>(b_element); --i){
-        T value = mData[i];
-        mData[w--] = value;
-        mData[w--] = value;
+    //insert
+    for (int i = 0; i <= n_element; i++) {
+        mData[mSize+n_element - a -i*2] = mData[mSize-a-1-i];
+        mData[mSize+n_element - a -i*2-1] = mData[mSize-a-1-i];
     }
-
-    mSize = newSize;
+    mSize+=n_element+1;
 }
 
 #endif

@@ -2,18 +2,20 @@
 #define __STUDENT_H_
 
 #include <cstddef>
+#include "vector.h"
 template <typename T>
 void CP::vector<T>::compress() {
     //write your code here
-    if (mSize == mCap) {
+    if(mSize == mCap){
         return;
     }
-    T *newarr = new T[mSize];
+
+    T *arr = new T[mSize];
     for (size_t i = 0; i < mSize; i++) {
-        newarr[i] = mData[i];
+        arr[i] = mData[i];
     }
     delete [] mData;
-    mData = newarr;
+    mData = arr;
     mCap = mSize;
 }
 

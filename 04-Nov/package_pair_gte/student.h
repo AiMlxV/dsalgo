@@ -6,7 +6,13 @@
 template <typename T1,typename T2>
 bool CP::pair<T1,T2>::operator>=(const pair<T1,T2>& other) const {
   //write your code here
-  return (((first > other.first) || (first == other.first && second > other.second)) || (first == other.first && second == other.second));
+  if (first > other.first) { 
+    return true;
+  } 
+
+  if (first == other.first and second >= other.second) {
+    return true;
+  }
 
   return false;
 }
