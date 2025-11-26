@@ -1,6 +1,6 @@
 #ifndef _STUDENT_H_INCLUDED
 #define _STUDENT_H_INCLUDED
-// #include "queue.h"
+#include "queue.h"
 
 template <typename T>
 void CP::queue<T>::reverse() {
