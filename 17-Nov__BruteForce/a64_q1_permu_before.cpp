@@ -37,7 +37,7 @@ int main() {
   int m, n;
   cin >> n >> m;
   map<int, vector<int>> correct_order;
-  bool used[n] = {};
+  bool used[n];
   int a, b;
   for (int i = 0; i < m; i++) {
     cin >> a >> b;

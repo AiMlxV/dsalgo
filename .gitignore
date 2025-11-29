@@ -6,4 +6,5 @@
 /ntscraper
 *.compile
 *.prob
+*.o
 outDebug
