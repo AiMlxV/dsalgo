@@ -1,1 +1,0 @@
-{"name":"Local: d62_q1b_grandfather","url":"/home/nongart/dsalgo/03-Nov/d62_q1b_grandfather.cpp","tests":[{"id":1762167992834,"input":"5 4 \n1 2 \n1 3 \n2 20 \n3 30 \n2 21 \n1 2 \n2 30 \n30 20 \n20 20","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/nongart/dsalgo/03-Nov/d62_q1b_grandfather.cpp","group":"local","local":true}
