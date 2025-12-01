@@ -1,68 +1,43 @@
-//for education purpose
-#include "bits/stdc++.h"
-
+#include <bits/stdc++.h>
 using namespace std;
-
-int r,c;
-int dist[5005][5005];
-string g[5005];
-vector<pair<int, int>> popbus[10];
-deque<pair<int, int>> dq;
-
-void update(int r_u, int c_u, int d, bool can_tp){
-    if (r_u < 0 or c_u < 0 or r_u >= r or c_u >= c or g[r_u][c_u] == 'X' or dist[r_u][c_u] <= d) {
-        return;
-    }
-    dist[r_u][c_u] = d;
-    if (can_tp) {
-        dq.push_front({r_u,c_u});
-    }
-    else {
-        dq.push_back({r_u,c_u});
-    }
-}
-
-int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
+using pii = pair<int, int>;
+const int N = 5005;
+int r, c, dist[N][N];
+string g[N];
+vector<pii> popbus[10];
+deque<pii> dq;
+int main() {
+    ios::sync_with_stdio(0); cin.tie(0);
     cin >> r >> c;
-    memset(dist, 0x3f, sizeof(dist));
-    
+    memset(dist, 0x3f, sizeof(dist)); // Init with INF
     for (int i = 0; i < r; i++) {
         cin >> g[i];
-        for (int j = 0; j < c; j++) {
-            if (isdigit(g[i][j])) {
-                popbus[g[i][j] - '0'].push_back({i,j});
-            }
-        }
+        for (int j = 0; j < c; j++)
+            if (isdigit(g[i][j])) popbus[g[i][j] - '0'].push_back({i, j});
     }
-
-    update(0, 0, 0, 1);
-
+    dist[0][0] = 0;
+    dq.push_back({0, 0});
     while (!dq.empty()) {
-        auto [cr,cc] = dq.front();
-        dq.pop_front();
-
+        auto [cr, cc] = dq.front(); dq.pop_front();
+        // 1. Teleport (Cost 0 -> push_front)
         if (isdigit(g[cr][cc])) {
             int n = g[cr][cc] - '0';
             if (popbus[n].size() == 2) {
-
-                auto tp_to = popbus[n][0];
-                if (popbus[n][0] == make_pair(cr, cc)) {
-                    tp_to = popbus[n][1];
-                }
-
-                if (cr+cc < tp_to.first + tp_to.second) {
-                    update(tp_to.first, tp_to.second, dist[cr][cc], 1);
+                pii to = (popbus[n][0] == make_pair(cr, cc)) ? popbus[n][1] : popbus[n][0];
+                if (cr + cc < to.first + to.second && dist[to.first][to.second] > dist[cr][cc]) {
+                    dist[to.first][to.second] = dist[cr][cc];
+                    dq.push_front(to);
                 }
             }
         }
-
-        int dr[] = {0,0,1};
-        int dc[] = {-1,1,0};
-
+        // 2. Walk (Cost 1 -> push_back)
+        int dr[] = {0, 0, 1}, dc[] = {-1, 1, 0};
         for (int i = 0; i < 3; i++) {
-            update(cr + dr[i], cc + dc[i], dist[cr][cc] + 1, 0);
+            int nr = cr + dr[i], nc = cc + dc[i];
+            if (nr >= 0 && nr < r && nc >= 0 && nc < c && g[nr][nc] != 'X' && dist[nr][nc] > dist[cr][cc] + 1) {
+                dist[nr][nc] = dist[cr][cc] + 1;
+                dq.push_back({nr, nc});
+            }
         }
     }
     cout << dist[r - 1][c - 1];
