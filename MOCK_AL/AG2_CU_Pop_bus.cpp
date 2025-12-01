@@ -15,10 +15,10 @@ int main() {
         for (int j = 0; j < c; j++)
             if (isdigit(g[i][j])) popbus[g[i][j] - '0'].push_back({i, j});
     }
-    dist[0][0] = 0;
-    dq.push_back({0, 0});
-    while (!dq.empty()) {
-        auto [cr, cc] = dq.front(); dq.pop_front();
+    dist[0][0] = 0; //using pii = pair<int, int>;
+    dq.push_back({0, 0}); //const int N = 5005;
+    while (!dq.empty()) { //string g[N]; //deque<pii> dq;
+        auto [cr, cc] = dq.front(); dq.pop_front(); //vector<pii> popbus[10];
         // 1. Teleport (Cost 0 -> push_front)
         if (isdigit(g[cr][cc])) {
             int n = g[cr][cc] - '0';
