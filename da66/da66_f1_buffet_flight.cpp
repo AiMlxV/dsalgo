@@ -2,6 +2,7 @@
 using namespace std;
 #define INF 1e9
 int n,m;
+
 vector<int> ci;
 vector<int> co;
 int main(){
