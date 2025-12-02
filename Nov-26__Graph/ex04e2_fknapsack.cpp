@@ -14,14 +14,11 @@ int main() {
     vector<pair<double, double>> items(N); //Ratio
     for(int i=0; i<N; i++) {
         double w; cin >> w;
-        
         if (w == 0) {
             if (v[i] > 0) {
                  ans += v[i];
-                 items[i] = {0, 0};
-            } else {
-                 items[i] = {0, 0};
             }
+        items[i] = {0, 0};
         } else {
             items[i] = {v[i]/w, w};
         }
